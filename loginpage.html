@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Login | RomTech Solicitações</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+     <style>
+
+        /*==========================================================
+LOGIN
+==========================================================*/
+
+.login-page{
+
+    font-family:'Inter',sans-serif;
+
+    background:#EEF3F9;
+
+    overflow:hidden;
+
+}
+
+/*==========================================================
+BACKGROUND
+==========================================================*/
+
+.login-background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0D4D86 0%,
+            #195F9F 100%
+        );
+
+}
+
+.login-background::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        radial-gradient(
+            rgba(255,255,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:30px 30px;
+
+}
+
+/*==========================================================
+CONTAINER
+==========================================================*/
+
+.login-container{
+
+    position:relative;
+
+    z-index:10;
+
+    width:100%;
+
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+}
+
+/*==========================================================
+CARD
+==========================================================*/
+
+.login-card{
+
+    width:430px;
+
+    max-width:100%;
+
+    background:#FFF;
+
+    border-radius:20px;
+
+    padding:45px;
+
+    box-shadow:
+
+        0 20px 50px rgba(0,0,0,.18);
+
+    animation:fadeLogin .5s;
+
+}
+
+.login-logo{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:25px;
+
+}
+
+.login-logo img{
+
+    width:180px;
+
+}
+
+.login-card h1{
+
+    text-align:center;
+
+    color:#0D4D86;
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+}
+
+.login-card p{
+
+    text-align:center;
+
+    color:#888;
+
+    margin-bottom:35px;
+
+    line-height:24px;
+
+}
+
+/*==========================================================
+INPUTS
+==========================================================*/
+
+.input-group{
+
+    margin-bottom:20px;
+
+}
+
+.input-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#444;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+.input-icon{
+
+    position:relative;
+
+}
+
+.input-icon i:first-child{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#999;
+
+}
+
+.input-icon input{
+
+    width:100%;
+
+    height:54px;
+
+    border:1px solid #D9E0E7;
+
+    border-radius:14px;
+
+    padding-left:50px;
+
+    padding-right:50px;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.input-icon input:focus{
+
+    border-color:#0D4D86;
+
+    box-shadow:0 0 0 4px rgba(13,77,134,.15);
+
+}
+
+#mostrarSenha{
+
+    position:absolute;
+
+    right:15px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#888;
+
+    font-size:16px;
+
+}
+
+/*==========================================================
+OPÇÕES
+==========================================================*/
+
+.login-options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    font-size:14px;
+
+}
+
+.login-options a{
+
+    text-decoration:none;
+
+    color:#0D4D86;
+
+    font-weight:600;
+
+}
+
+.login-options a:hover{
+
+    text-decoration:underline;
+
+}
+
+.lembrar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/*==========================================================
+BOTÃO
+==========================================================*/
+
+.btn-login{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#0D4D86;
+
+    color:#FFF;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-login i{
+
+    margin-right:10px;
+
+}
+
+.btn-login:hover{
+
+    background:#0A3F6D;
+
+    transform:translateY(-2px);
+
+}
+
+/*==========================================================
+FOOTER
+==========================================================*/
+
+.login-footer{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:13px;
+
+    line-height:22px;
+
+}
+
+/*==========================================================
+ANIMAÇÃO
+==========================================================*/
+
+@keyframes fadeLogin{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================================
+RESPONSIVO
+==========================================================*/
+
+@media(max-width:768px){
+
+    .login-card{
+
+        padding:30px;
+
+    }
+
+    .login-logo img{
+
+        width:150px;
+
+    }
+
+    .login-card h1{
+
+        font-size:28px;
+
+    }
+
+}
+
+    </style>         
+
+</head>
+
+<body class="login-page">
+
+    <!-- BACKGROUND -->
+
+    <div class="login-background"></div>
+
+    <!-- CARD LOGIN -->
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <!-- LOGO -->
+
+            <div class="login-logo">
+
+                <img src="assets/logo.png"
+                     alt="RomTech">
+
+            </div>
+
+            <h1>Bem-vindo</h1>
+
+            <p>
+
+                Faça login para acessar o sistema de Solicitações.
+
+            </p>
+
+            <!-- FORM -->
+
+            <form id="formLogin">
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label>E-mail</label>
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="Digite seu e-mail"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <!-- SENHA -->
+
+                <div class="input-group">
+
+                    <label>Senha</label>
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="senha"
+                            placeholder="Digite sua senha"
+                            required>
+
+                        <button
+                            type="button"
+                            id="mostrarSenha">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- OPÇÕES -->
+
+                <div class="login-options">
+
+                    <label class="lembrar">
+
+                        <input
+                            type="checkbox"
+                            id="lembrar">
+
+                        Lembrar acesso
+
+                    </label>
+
+                    <a href="#"
+                       id="recuperarSenha">
+
+                        Esqueci minha senha
+
+                    </a>
+
+                </div>
+
+                <!-- BOTÃO -->
+
+                <button
+                    type="submit"
+                    class="btn-login">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Entrar
+
+                </button>
+
+            </form>
+
+            <!-- RODAPÉ -->
+
+            <div class="login-footer">
+
+                RomTech Gestão de Equipamentos
+
+                <br>
+
+                Versão 1.0.0
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LOADER -->
+
+    <div id="loading"
+         class="loading-overlay">
+
+        <div class="spinner"></div>
+
+        <span>
+
+            Autenticando...
+
+        </span>
+
+    </div>
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast">
+
+    </div>
+
+    <script type="module"
+            src="js/login.js"></script>
+
+ <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
+import {
+
+    getAuth,
+
+    signInWithEmailAndPassword,
+
+    setPersistence,
+
+    browserLocalPersistence,
+
+    browserSessionPersistence,
+
+    sendPasswordResetEmail,
+
+    onAuthStateChanged(auth, (user) => {
+
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+/*==========================================================
+FIREBASE
+==========================================================*/
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyD7eWqYuy2aslSotSj6Tw55YdAS13uDYQ0",
+
+    authDomain: "controlsys-1e96f.firebaseapp.com",
+
+    projectId: "controlsys-1e96f",
+
+    storageBucket: "controlsys-1e96f.firebasestorage.app",
+
+    messagingSenderId: "522489167218",
+
+    appId: "1:522489167218:web:4da250a6d0e94c9a8871eb",
+
+    measurementId: "G-CFT7WCTK0H"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app);
+
+/*==========================================================
+ELEMENTOS
+==========================================================*/
+
+const formLogin = document.getElementById("formLogin");
+
+const txtEmail = document.getElementById("email");
+
+const txtSenha = document.getElementById("senha");
+
+const chkLembrar = document.getElementById("lembrar");
+
+const btnMostrarSenha = document.getElementById("mostrarSenha");
+
+const btnRecuperarSenha = document.getElementById("recuperarSenha");
+
+const loading = document.getElementById("loading");
+
+const toast = document.getElementById("toast");
+
+/*==========================================================
+LOGIN
+==========================================================*/
+
+formLogin.addEventListener("submit", async (e)=>{
+
+    e.preventDefault();
+
+    abrirLoading();
+
+    try{
+
+        if(chkLembrar.checked){
+
+            await setPersistence(
+
+                auth,
+
+                browserLocalPersistence
+
+            );
+
+        }else{
+
+            await setPersistence(
+
+                auth,
+
+                browserSessionPersistence
+
+            );
+
+        }
+
+        await signInWithEmailAndPassword(
+
+            auth,
+
+            txtEmail.value.trim(),
+
+            txtSenha.value
+
+        );
+
+        fecharLoading();
+
+        mostrarToast(
+
+            "Login realizado com sucesso."
+
+        );
+
+        setTimeout(()=>{
+
+            window.location="index.html";
+
+        },1000);
+
+    }
+
+    catch(error){
+
+        fecharLoading();
+
+        tratarErro(error);
+
+    }
+
+});
+/*==========================================================
+MOSTRAR / OCULTAR SENHA
+==========================================================*/
+
+btnMostrarSenha.addEventListener("click", () => {
+
+    if (txtSenha.type === "password") {
+
+        txtSenha.type = "text";
+
+        btnMostrarSenha.innerHTML =
+            '<i class="fa-solid fa-eye-slash"></i>';
+
+    } else {
+
+        txtSenha.type = "password";
+
+        btnMostrarSenha.innerHTML =
+            '<i class="fa-solid fa-eye"></i>';
+
+    }
+
+});
+
+/*==========================================================
+RECUPERAR SENHA
+==========================================================*/
+
+btnRecuperarSenha.addEventListener("click", async (e) => {
+
+    e.preventDefault();
+
+    const email = txtEmail.value.trim();
+
+    if (email === "") {
+
+        mostrarToast(
+
+            "Informe seu e-mail para recuperar a senha.",
+
+            "aviso"
+
+        );
+
+        txtEmail.focus();
+
+        return;
+
+    }
+
+    abrirLoading();
+
+    try {
+
+        await sendPasswordResetEmail(auth, email);
+
+        fecharLoading();
+
+        mostrarToast(
+
+            "E-mail de recuperação enviado."
+
+        );
+
+    } catch (error) {
+
+        fecharLoading();
+
+        tratarErro(error);
+
+    }
+
+});
+
+/*==========================================================
+ENTER NOS CAMPOS
+==========================================================*/
+
+txtEmail.addEventListener("keypress", (e) => {
+
+    if (e.key === "Enter") {
+
+        txtSenha.focus();
+
+    }
+
+});
+
+txtSenha.addEventListener("keypress", (e) => {
+
+    if (e.key === "Enter") {
+
+        formLogin.requestSubmit();
+
+    }
+
+});
+
+/*==========================================================
+LIMPAR TOAST AO DIGITAR
+==========================================================*/
+
+txtEmail.addEventListener("input", () => {
+
+    toast.className = "toast";
+
+});
+
+txtSenha.addEventListener("input", () => {
+
+    toast.className = "toast";
+
+});
+
+/*==========================================================
+FOCO AUTOMÁTICO
+==========================================================*/
+
+window.addEventListener("load", () => {
+
+    txtEmail.focus();
+
+});
+
+/*==========================================================
+LOADING
+==========================================================*/
+
+function abrirLoading() {
+
+    loading.style.display = "flex";
+
+}
+
+function fecharLoading() {
+
+    loading.style.display = "none";
+
+}
+
+/*==========================================================
+TOAST
+==========================================================*/
+
+function mostrarToast(mensagem, tipo = "sucesso") {
+
+    toast.innerHTML = mensagem;
+
+    toast.className = "toast show";
+
+    if (tipo === "erro") {
+
+        toast.classList.add("erro");
+
+    }
+
+    if (tipo === "aviso") {
+
+        toast.classList.add("aviso");
+
+    }
+
+    setTimeout(() => {
+
+        toast.className = "toast";
+
+    }, 3500);
+
+}
+
+/*==========================================================
+TRATAMENTO DOS ERROS FIREBASE
+==========================================================*/
+
+function tratarErro(error) {
+
+    console.error(error);
+
+    switch (error.code) {
+
+        case "auth/invalid-email":
+
+            mostrarToast(
+
+                "E-mail inválido.",
+
+                "erro"
+
+            );
+
+            break;
+
+        case "auth/user-not-found":
+
+            mostrarToast(
+
+                "Usuário não encontrado.",
+
+                "erro"
+
+            );
+
+            break;
+
+        case "auth/wrong-password":
+
+            mostrarToast(
+
+                "Senha incorreta.",
+
+                "erro"
+
+            );
+
+            break;
+
+        case "auth/invalid-credential":
+
+            mostrarToast(
+
+                "Usuário ou senha inválidos.",
+
+                "erro"
+
+            );
+
+            break;
+
+        case "auth/too-many-requests":
+
+            mostrarToast(
+
+                "Muitas tentativas. Aguarde alguns minutos.",
+
+                "erro"
+
+            );
+
+            break;
+
+        case "auth/network-request-failed":
+
+            mostrarToast(
+
+                "Sem conexão com a internet.",
+
+                "erro"
+
+            );
+
+            break;
+
+        default:
+
+            mostrarToast(
+
+                error.message,
+
+                "erro"
+
+            );
+
+    }
+
+}
+
+/*==========================================================
+USUÁRIO JÁ LOGADO
+==========================================================*/
+
+auth.onAuthStateChanged((user) => {
+
+    if (user) {
+
+        window.location.href = "index.html";
+
+    }
+
+});
+
+/*==========================================================
+ESCONDER LOADER AO ABRIR
+==========================================================*/
+
+window.addEventListener("load", () => {
+
+    fecharLoading();
+
+});
+
+    </script>           
+
+</body>
+
+</html>
