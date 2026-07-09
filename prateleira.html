@@ -4,290 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Prateleira Virtual | RomTech Solicitações</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
-
-<body>
-
-    <!-- LOADER -->
-
-    <div id="loading" class="loading-overlay">
-
-        <div class="spinner"></div>
-
-        <span>Carregando equipamentos...</span>
-
-    </div>
-
-    <!-- SIDEBAR -->
-
-    <aside class="sidebar">
-
-        <div class="logo">
-
-            <img src="assets/logo.png" alt="RomTech">
-
-        </div>
-
-        <nav>
-
-            <a href="index.html">
-                <i class="fa-solid fa-chart-line"></i>
-                Dashboard
-            </a>
-
-            <a href="prateleira.html" class="active">
-                <i class="fa-solid fa-boxes-stacked"></i>
-                Prateleira Virtual
-            </a>
-
-            <a href="solicitacoes.html">
-                <i class="fa-solid fa-file-circle-plus"></i>
-                Solicitações
-            </a>
-
-            <a href="transferencias.html">
-                <i class="fa-solid fa-truck-fast"></i>
-                Transferências
-            </a>
-
-            <a href="rastreios.html">
-                <i class="fa-solid fa-location-dot"></i>
-                Rastreios
-            </a>
-
-            <a href="compras.html">
-                <i class="fa-solid fa-cart-shopping"></i>
-                Compras
-            </a>
-
-            <a href="patrimonio.html">
-                <i class="fa-solid fa-desktop"></i>
-                Patrimônio
-            </a>
-
-            <a href="relatorios.html">
-                <i class="fa-solid fa-chart-column"></i>
-                Relatórios
-            </a>
-
-            <a href="configuracoes.html">
-                <i class="fa-solid fa-gear"></i>
-                Configurações
-            </a>
-
-        </nav>
-
-    </aside>
-
-    <!-- CONTEÚDO -->
-
-    <main class="content">
-
-        <!-- HEADER -->
-
-        <header class="topbar">
-
-            <div>
-
-                <h1>Prateleira Virtual</h1>
-
-                <span>
-                    Equipamentos liberados pela Manutenção
-                </span>
-
-            </div>
-
-            <button id="btnAtualizar">
-
-                <i class="fa-solid fa-rotate"></i>
-
-                Atualizar
-
-            </button>
-
-        </header>
-
-        <!-- CARDS -->
-
-        <section class="cards">
-
-            <div class="card">
-
-                <h3 id="totalEquipamentos">0</h3>
-
-                <span>Total Disponível</span>
-
-            </div>
-
-            <div class="card">
-
-                <h3 id="totalDesktop">0</h3>
-
-                <span>Desktops</span>
-
-            </div>
-
-            <div class="card">
-
-                <h3 id="totalNotebook">0</h3>
-
-                <span>Notebooks</span>
-
-            </div>
-
-            <div class="card">
-
-                <h3 id="totalMonitor">0</h3>
-
-                <span>Monitores</span>
-
-            </div>
-
-        </section>
-
-        <!-- FILTROS -->
-
-        <section class="filtros">
-
-            <input
-                type="text"
-                id="txtPesquisar"
-                placeholder="Pesquisar patrimônio, nome ou serial">
-
-            <select id="cmbCategoria">
-
-                <option value="">Todas Categorias</option>
-
-                <option>Desktop</option>
-
-                <option>Notebook</option>
-
-                <option>Monitor</option>
-
-                <option>Impressora</option>
-
-                <option>Switch</option>
-
-                <option>Servidor</option>
-
-            </select>
-
-            <button id="btnPesquisar">
-
-                <i class="fa-solid fa-search"></i>
-
-                Pesquisar
-
-            </button>
-
-        </section>
-
-        <!-- TABELA -->
-
-        <section class="table-container">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Patrimônio</th>
-
-                        <th>Equipamento</th>
-
-                        <th>Serial</th>
-
-                        <th>Loja</th>
-
-                        <th>Status</th>
-
-                        <th>Ações</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody id="tbodyEquipamentos">
-
-                    <!-- Firebase -->
-
-                </tbody>
-
-            </table>
-
-        </section>
-
-        <!-- PAGINAÇÃO -->
-
-        <div class="pagination">
-
-            <span id="registros">
-
-                0 Equipamentos
-
-            </span>
-
-        </div>
-
-    </main>
-
-    <!-- MODAL -->
-
-    <div id="modalDetalhes" class="modal">
-
-        <div class="modal-content">
-
-            <div class="modal-header">
-
-                <h2>Detalhes do Equipamento</h2>
-
-                <button id="fecharModal">
-
-                    <i class="fa-solid fa-xmark"></i>
-
-                </button>
-
-            </div>
-
-            <div class="modal-body" id="detalhesEquipamento">
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- TOAST -->
-
-    <div id="toast" class="toast">
-
-        Operação realizada.
-
-    </div>
-
-    <script type="module" src="js/prateleira.js"></script>
-
-</body>
-
-</html>
-
-/* ==========================================================
-   ROMTECH SOLICITAÇÕES
-   STYLE.CSS
-   PARTE 2.1
-   Reset + Body + Sidebar + Header
-========================================================== */
+<style>
 
 *{
     margin:0;
@@ -1773,6 +1490,285 @@ UTILITÁRIOS
     border-radius:var(--radius);
 
 }
+
+</style>
+    <title>Prateleira Virtual | RomTech Solicitações</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- LOADER -->
+
+    <div id="loading" class="loading-overlay">
+
+        <div class="spinner"></div>
+
+        <span>Carregando equipamentos...</span>
+
+    </div>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <img src="assets/logo.png" alt="RomTech">
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Dashboard
+            </a>
+
+            <a href="prateleira.html" class="active">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                Prateleira Virtual
+            </a>
+
+            <a href="solicitacoes.html">
+                <i class="fa-solid fa-file-circle-plus"></i>
+                Solicitações
+            </a>
+
+            <a href="transferencias.html">
+                <i class="fa-solid fa-truck-fast"></i>
+                Transferências
+            </a>
+
+            <a href="rastreios.html">
+                <i class="fa-solid fa-location-dot"></i>
+                Rastreios
+            </a>
+
+            <a href="compras.html">
+                <i class="fa-solid fa-cart-shopping"></i>
+                Compras
+            </a>
+
+            <a href="patrimonio.html">
+                <i class="fa-solid fa-desktop"></i>
+                Patrimônio
+            </a>
+
+            <a href="relatorios.html">
+                <i class="fa-solid fa-chart-column"></i>
+                Relatórios
+            </a>
+
+            <a href="configuracoes.html">
+                <i class="fa-solid fa-gear"></i>
+                Configurações
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+
+    <main class="content">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Prateleira Virtual</h1>
+
+                <span>
+                    Equipamentos liberados pela Manutenção
+                </span>
+
+            </div>
+
+            <button id="btnAtualizar">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Atualizar
+
+            </button>
+
+        </header>
+
+        <!-- CARDS -->
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h3 id="totalEquipamentos">0</h3>
+
+                <span>Total Disponível</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3 id="totalDesktop">0</h3>
+
+                <span>Desktops</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3 id="totalNotebook">0</h3>
+
+                <span>Notebooks</span>
+
+            </div>
+
+            <div class="card">
+
+                <h3 id="totalMonitor">0</h3>
+
+                <span>Monitores</span>
+
+            </div>
+
+        </section>
+
+        <!-- FILTROS -->
+
+        <section class="filtros">
+
+            <input
+                type="text"
+                id="txtPesquisar"
+                placeholder="Pesquisar patrimônio, nome ou serial">
+
+            <select id="cmbCategoria">
+
+                <option value="">Todas Categorias</option>
+
+                <option>Desktop</option>
+
+                <option>Notebook</option>
+
+                <option>Monitor</option>
+
+                <option>Impressora</option>
+
+                <option>Switch</option>
+
+                <option>Servidor</option>
+
+            </select>
+
+            <button id="btnPesquisar">
+
+                <i class="fa-solid fa-search"></i>
+
+                Pesquisar
+
+            </button>
+
+        </section>
+
+        <!-- TABELA -->
+
+        <section class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Patrimônio</th>
+
+                        <th>Equipamento</th>
+
+                        <th>Serial</th>
+
+                        <th>Loja</th>
+
+                        <th>Status</th>
+
+                        <th>Ações</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="tbodyEquipamentos">
+
+                    <!-- Firebase -->
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <!-- PAGINAÇÃO -->
+
+        <div class="pagination">
+
+            <span id="registros">
+
+                0 Equipamentos
+
+            </span>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL -->
+
+    <div id="modalDetalhes" class="modal">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <h2>Detalhes do Equipamento</h2>
+
+                <button id="fecharModal">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+            </div>
+
+            <div class="modal-body" id="detalhesEquipamento">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST -->
+
+    <div id="toast" class="toast">
+
+        Operação realizada.
+
+    </div>
+
+    <script type="module" src="js/prateleira.js"></script>
+
+</body>
+
+</html>
+
 /*==========================================================
 PRATELEIRA.JS
 PARTE 3.1
