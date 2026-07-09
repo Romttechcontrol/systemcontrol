@@ -40,9 +40,6 @@ footer{text-align:center;color:#888;margin-top:30px}
 </head>
 <body>
 
-  function iniciarSistema(){}
-  
-});
 <aside class="sidebar">
 <div class="logo">ROMTECH</div>
 
@@ -122,8 +119,6 @@ RomTech Gestão de Equipamentos • Dashboard v1.0.0
 
 </main>
 
-<script src="js/firebase.js"></script>
-<script src="js/app.js"></script>
 <script type="module"> 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 
@@ -159,6 +154,19 @@ onAuthStateChanged(auth, (user) => {
         return;
 
     }
+
+    iniciarSistema();
+
+});
+
+function iniciarSistema(){
+
+    console.log("Usuário autenticado.");
+
+    // Aqui futuramente vamos carregar o dashboard
+
+}
+
 </script>
 </body>
 </html>
