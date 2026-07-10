@@ -1888,14 +1888,6 @@ function mostrarToast(mensagem, tipo="sucesso"){
 AUTENTICAÇÃO
 ==========================================================*/
 
-import {
-
-    getAuth,
-
-    onAuthStateChanged
-
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
 const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
