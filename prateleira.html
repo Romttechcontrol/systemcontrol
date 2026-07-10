@@ -2029,15 +2029,16 @@ equipamentos.push({
 
     catch(error){
 
-        console.error(error);
+       console.error(error);
 
-        mostrarToast(
+console.log("Código:", error.code);
 
-            "Erro ao carregar equipamentos.",
+console.log("Mensagem:", error.message);
 
-            "erro"
-
-        );
+mostrarToast(
+    error.message,
+    "erro"
+);
 
     }
 
