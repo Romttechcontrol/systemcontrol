@@ -2076,12 +2076,46 @@ function preencherTabela(){
     if(equipamentosFiltrados.length===0){
 
         tbody.innerHTML=`
+            <tr>
+                <td colspan="6" style="text-align:center;padding:20px;">
+                    Nenhum equipamento disponível.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+    equipamentosFiltrados.forEach(item=>{
+
+        tbody.innerHTML+=`
 
         <tr>
 
-            <td colspan="8" style="text-align:center;">
+            <td>${item.patrimonio}</td>
 
-                Nenhum equipamento disponível.
+            <td>${item.equipamento}</td>
+
+            <td>${item.serial}</td>
+
+            <td>${item.loja}</td>
+
+            <td>
+                <span class="status disponivel">
+                    ${item.status}
+                </span>
+            </td>
+
+            <td>
+
+                <button class="btn-visualizar" onclick="visualizarEquipamento('${item.patrimonio}')">
+                    <i class="fa-solid fa-eye"></i>
+                </button>
+
+                <button class="btn-selecionar" onclick="selecionarEquipamento('${item.patrimonio}')">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
 
             </td>
 
@@ -2089,9 +2123,9 @@ function preencherTabela(){
 
         `;
 
-        return;
+    });
 
-    }
+}
 
     equipamentosFiltrados.forEach(item=>{
 
@@ -2254,7 +2288,7 @@ setInterval(()=>{
 
     carregarEquipamentos();
 
-},10000);
+},120000);
 
 /*==========================================================
 FECHAMENTO
