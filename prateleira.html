@@ -1973,53 +1973,49 @@ async function carregarEquipamentos(){
 
             }
 
-            equipamentos.push({
+equipamentos.push({
 
-                patrimonio:
+    patrimonio: computador.patrimonio || "",
 
-                    computador.patrimonio || "",
+    equipamento: computador.nomePC || "",
 
-                equipamento:
+    categoria:(()=>{
 
-                    computador.equipamento || "",
+        const nome=(computador.nomePC || "").toLowerCase();
 
-                categoria:
+        if(nome.includes("desktop")) return "Desktop";
 
-                    computador.categoria || "",
+        if(nome.includes("notebook")) return "Notebook";
 
-                modelo:
+        if(nome.includes("monitor")) return "Monitor";
 
-                    computador.modelo || "",
+        if(nome.includes("switch")) return "Switch";
 
-                processador:
+        if(nome.includes("impressora")) return "Impressora";
 
-                    computador.processador || "",
+        return "Outros";
 
-                memoria:
+    })(),
 
-                    computador.memoria || "",
+    modelo: computador.nomePC || "",
 
-                armazenamento:
+    processador: computador.processador || "",
 
-                    computador.armazenamento || "",
+    memoria: computador.ram || "",
 
-                loja:
+    armazenamento: computador.armazenamento || "",
 
-                    nomeLoja,
+    serial: computador.serial || "",
 
-                status:
+    loja: nomeLoja,
 
-                    manutencao.statusManutencao,
+    status: "Disponível",
 
-                tecnico:
+    tecnico: manutencao.tecnico || "",
 
-                    manutencao.tecnico || "",
+    observacao: computador.observacoes || ""
 
-                observacao:
-
-                    manutencao.observacao || ""
-
-            });
+});
 
         }
 
