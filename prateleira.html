@@ -1763,17 +1763,18 @@ UTILITÁRIOS
 
     </div>
 
-<script type="module">
- initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+ <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+/*==========================================================
+IMPORTS
+==========================================================*/
+
+import { initializeApp }
+
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
 
 import {
-    getAuth,
-    onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 
-import {
     getFirestore,
     collection,
     query,
@@ -1781,60 +1782,63 @@ import {
     getDocs,
     getDoc,
     doc
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+}
+
+from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 /*==========================================================
 FIREBASE
 MANUTENÇÃO
 ==========================================================*/
 
-const firebaseConfig = {
+const firebaseConfig={
 
-    apiKey: "AIzaSyCOjMwl8DVQ73AVUa0H4eFBwQuAmLM_aKs",
+    apiKey:"AIzaSyCOjMwl8DVQ73AVUa0H4eFBwQuAmLM_aKs",
 
-    authDomain: "controlegeral-c90c1.firebaseapp.com",
+    authDomain:"controlegeral-c90c1.firebaseapp.com",
 
-    projectId: "controlegeral-c90c1"
+    projectId:"controlegeral-c90c1"
 
 };
 
-const app = initializeApp(firebaseConfig);
+const app=initializeApp(firebaseConfig);
 
-const auth = getAuth(app);
-
-const db = getFirestore(app);
+const db=getFirestore(app);
 
 /*==========================================================
 ELEMENTOS
 ==========================================================*/
 
-const tbody = document.getElementById("tbodyEquipamentos");
+const tbody=document.getElementById("tbodyEquipamentos");
 
-const txtPesquisar = document.getElementById("txtPesquisar");
+const txtPesquisar=document.getElementById("txtPesquisar");
 
-const cmbCategoria = document.getElementById("cmbCategoria");
+const cmbCategoria=document.getElementById("cmbCategoria");
 
-const btnPesquisar = document.getElementById("btnPesquisar");
+const btnPesquisar=document.getElementById("btnPesquisar");
 
-const btnAtualizar = document.getElementById("btnAtualizar");
+const btnAtualizar=document.getElementById("btnAtualizar");
 
-const totalEquipamentos = document.getElementById("totalEquipamentos");
+const totalEquipamentos=document.getElementById("totalEquipamentos");
 
-const totalDesktop = document.getElementById("totalDesktop");
+const totalDesktop=document.getElementById("totalDesktop");
 
-const totalNotebook = document.getElementById("totalNotebook");
+const totalNotebook=document.getElementById("totalNotebook");
 
-const totalMonitor = document.getElementById("totalMonitor");
+const totalMonitor=document.getElementById("totalMonitor");
 
-const loading = document.getElementById("loading");
+const loading=document.getElementById("loading");
+
+const toast=document.getElementById("toast");
 
 /*==========================================================
 VARIÁVEIS
 ==========================================================*/
 
-let equipamentos = [];
+let equipamentos=[];
 
-let equipamentosFiltrados = [];
+let equipamentosFiltrados=[];
 
 /*==========================================================
 LOADING
@@ -1842,13 +1846,13 @@ LOADING
 
 function abrirLoading(){
 
-    loading.style.display = "flex";
+    loading.style.display="flex";
 
 }
 
 function fecharLoading(){
 
-    loading.style.display = "none";
+    loading.style.display="none";
 
 }
 
@@ -1856,21 +1860,19 @@ function fecharLoading(){
 TOAST
 ==========================================================*/
 
-function mostrarToast(mensagem, tipo="sucesso"){
+function mostrarToast(texto,tipo="sucesso"){
 
-    const toast = document.getElementById("toast");
+    toast.innerHTML=texto;
 
-    toast.textContent = mensagem;
+    toast.className="toast show";
 
-    toast.className = "toast show";
-
-    if(tipo === "erro"){
+    if(tipo==="erro"){
 
         toast.classList.add("erro");
 
     }
 
-    if(tipo === "aviso"){
+    if(tipo==="aviso"){
 
         toast.classList.add("aviso");
 
@@ -1878,163 +1880,154 @@ function mostrarToast(mensagem, tipo="sucesso"){
 
     setTimeout(()=>{
 
-        toast.className = "toast";
+        toast.className="toast";
 
     },3000);
 
 }
 
 /*==========================================================
-AUTENTICAÇÃO
+INÍCIO
 ==========================================================*/
 
-const auth = getAuth(app);
-
-onAuthStateChanged(auth, (user) => {
-
-    if (!user) {
-
-        window.location.href = "login.html";
-
-        return;
-
-    }
+document.addEventListener("DOMContentLoaded",()=>{
 
     carregarEquipamentos();
 
 });
 /*==========================================================
-EVENTOS
-==========================================================*/
-
-btnAtualizar.addEventListener("click", () => {
-
-    if(auth.currentUser){
-
-        carregarEquipamentos();
-
-    }
-
-});
-
-btnPesquisar.addEventListener("click", () => {
-
-    pesquisarEquipamentos();
-
-});
-
-txtPesquisar.addEventListener("keyup", () => {
-
-    pesquisarEquipamentos();
-
-});
-
-cmbCategoria.addEventListener("change", () => {
-
-    pesquisarEquipamentos();
-
-});
-
-/*==========================================================
-ATUALIZAÇÃO AUTOMÁTICA
-==========================================================*/
-
-setInterval(() => {
-
-    if(auth.currentUser){
-
-        carregarEquipamentos();
-
-    }
-
-},10000);
-
-/*==========================================================
-AS FUNÇÕES:
-
-carregarEquipamentos()
-
-pesquisarEquipamentos()
-
-montarTabela()
-
-atualizarCards()
-
-serão implementadas na PARTE 3.2
-==========================================================*/
-/*==========================================================
 CARREGAR EQUIPAMENTOS
-Busca somente equipamentos com manutenção concluída
 ==========================================================*/
 
 async function carregarEquipamentos(){
 
     abrirLoading();
 
-    equipamentos = [];
-
-    tbody.innerHTML = "";
+    equipamentos=[];
 
     try{
 
-        const manutencoes = query(
+        const manutencoes=query(
+
             collection(db,"manutencao"),
+
             where("statusManutencao","==","Concluído")
+
         );
 
-        const snapshot = await getDocs(manutencoes);
+        const snapshot=await getDocs(manutencoes);
 
         for(const documento of snapshot.docs){
 
-            const manutencao = documento.data();
+            const manutencao=documento.data();
 
-            if(!manutencao.pcId) continue;
+            if(!manutencao.pcId){
 
-            const computadorRef = doc(
+                continue;
+
+            }
+
+            const computadorRef=doc(
+
                 db,
+
                 "computadores",
+
                 manutencao.pcId
+
             );
 
-            const computadorSnap = await getDoc(computadorRef);
+            const computadorSnap=await getDoc(computadorRef);
 
-            if(!computadorSnap.exists()) continue;
+            if(!computadorSnap.exists()){
 
-            const computador = computadorSnap.data();
+                continue;
+
+            }
+
+            const computador=computadorSnap.data();
+
+            let nomeLoja="-";
+
+            if(computador.lojaId){
+
+                const lojaRef=doc(
+
+                    db,
+
+                    "lojas",
+
+                    computador.lojaId
+
+                );
+
+                const lojaSnap=await getDoc(lojaRef);
+
+                if(lojaSnap.exists()){
+
+                    const loja=lojaSnap.data();
+
+                    nomeLoja=loja.nomeLoja || loja.nome || "-";
+
+                }
+
+            }
 
             equipamentos.push({
 
-                id: computadorSnap.id,
+                patrimonio:
 
-                patrimonio: computador.patrimonio || "",
+                    computador.patrimonio || "",
 
-                nomePC: computador.nomePC || "",
+                equipamento:
 
-                serial: computador.serial || "",
+                    computador.equipamento || "",
 
-                lojaId: computador.lojaId || "",
+                categoria:
 
-                armazenamento: computador.armazenamento || "",
+                    computador.categoria || "",
 
-                processador: computador.processador || "",
+                modelo:
 
-                ram: computador.ram || "",
+                    computador.modelo || "",
 
-                sistema: computador.sistema || "",
+                processador:
 
-                observacoes: computador.observacoes || "",
+                    computador.processador || "",
 
-                status: "Disponível"
+                memoria:
+
+                    computador.memoria || "",
+
+                armazenamento:
+
+                    computador.armazenamento || "",
+
+                loja:
+
+                    nomeLoja,
+
+                status:
+
+                    manutencao.statusManutencao,
+
+                tecnico:
+
+                    manutencao.tecnico || "",
+
+                observacao:
+
+                    manutencao.observacao || ""
 
             });
 
         }
 
-        equipamentosFiltrados = [...equipamentos];
+        equipamentosFiltrados=[...equipamentos];
 
         atualizarCards();
 
-        montarTabela();
+        preencherTabela();
 
     }
 
@@ -2043,8 +2036,11 @@ async function carregarEquipamentos(){
         console.error(error);
 
         mostrarToast(
+
             "Erro ao carregar equipamentos.",
+
             "erro"
+
         );
 
     }
@@ -2056,110 +2052,29 @@ async function carregarEquipamentos(){
     }
 
 }
-
 /*==========================================================
-PESQUISA
+PREENCHER TABELA
 ==========================================================*/
 
-function pesquisarEquipamentos(){
+function preencherTabela(){
 
-    const texto = txtPesquisar.value
-        .toLowerCase()
-        .trim();
+    tbody.innerHTML="";
 
-    const categoria = cmbCategoria.value;
+    if(equipamentosFiltrados.length===0){
 
-    equipamentosFiltrados = equipamentos.filter(item=>{
+        tbody.innerHTML=`
 
-        const pesquisa =
+        <tr>
 
-            item.nomePC.toLowerCase().includes(texto) ||
+            <td colspan="8" style="text-align:center;">
 
-            item.patrimonio.toString().includes(texto) ||
+                Nenhum equipamento disponível.
 
-            item.serial.toLowerCase().includes(texto);
+            </td>
 
-        let filtroCategoria = true;
-
-        if(categoria !== ""){
-
-            filtroCategoria = item.nomePC
-                .toLowerCase()
-                .includes(categoria.toLowerCase());
-
-        }
-
-        return pesquisa && filtroCategoria;
-
-    });
-
-    montarTabela();
-
-}
-
-/*==========================================================
-ATUALIZA CARDS
-==========================================================*/
-
-function atualizarCards(){
-
-    totalEquipamentos.textContent = equipamentos.length;
-
-    totalDesktop.textContent = equipamentos.filter(x=>
-
-        x.nomePC.toLowerCase().includes("desktop")
-
-    ).length;
-
-    totalNotebook.textContent = equipamentos.filter(x=>
-
-        x.nomePC.toLowerCase().includes("notebook")
-
-    ).length;
-
-    totalMonitor.textContent = equipamentos.filter(x=>
-
-        x.nomePC.toLowerCase().includes("monitor")
-
-    ).length;
-
-}
-/*==========================================================
-MONTA TABELA
-==========================================================*/
-
-function montarTabela(){
-
-    tbody.innerHTML = "";
-
-    if(equipamentosFiltrados.length === 0){
-
-        tbody.innerHTML = `
-
-            <tr>
-
-                <td colspan="6">
-
-                    <div class="sem-registros">
-
-                        <i class="fa-solid fa-box-open"></i>
-
-                        <h3>Nenhum equipamento disponível</h3>
-
-                        <p>
-                            Não existem equipamentos concluídos na manutenção.
-                        </p>
-
-                    </div>
-
-                </td>
-
-            </tr>
+        </tr>
 
         `;
-
-        document.getElementById("registros").textContent =
-            "0 Equipamentos";
 
         return;
 
@@ -2167,239 +2082,171 @@ function montarTabela(){
 
     equipamentosFiltrados.forEach(item=>{
 
-        tbody.innerHTML += `
+        tbody.innerHTML+=`
 
-            <tr class="fadeIn">
+        <tr>
 
-                <td class="col-patrimonio">
+            <td>${item.patrimonio}</td>
 
-                    <strong>${item.patrimonio}</strong>
+            <td>${item.equipamento}</td>
 
-                </td>
+            <td>${item.modelo}</td>
 
-                <td class="col-equipamento">
+            <td>${item.processador}</td>
 
-                    <strong>${item.nomePC}</strong>
+            <td>${item.memoria}</td>
 
-                </td>
+            <td>${item.armazenamento}</td>
 
-                <td class="col-serial">
+            <td>${item.loja}</td>
 
-                    ${item.serial}
+            <td>
 
-                </td>
+                <span class="status concluido">
 
-                <td class="col-loja">
+                    Disponível
 
-                    ${item.lojaId}
+                </span>
 
-                </td>
+            </td>
 
-                <td class="col-status">
-
-                    <span class="badge badge-disponivel">
-
-                        Disponível
-
-                    </span>
-
-                </td>
-
-                <td class="col-acoes">
-
-                    <div class="acoes">
-
-                        <button
-                            class="btn-icon btn-visualizar"
-                            onclick="visualizarEquipamento('${item.id}')">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
-
-                        <button
-                            class="btn-icon btn-solicitar"
-                            onclick="solicitarEquipamento('${item.id}')">
-
-                            <i class="fa-solid fa-paper-plane"></i>
-
-                        </button>
-
-                    </div>
-
-                </td>
-
-            </tr>
+        </tr>
 
         `;
 
     });
 
-    document.getElementById("registros").textContent =
+}
 
-        equipamentosFiltrados.length +
+/*==========================================================
+CARDS
+==========================================================*/
 
-        " Equipamentos encontrados";
+function atualizarCards(){
+
+    totalEquipamentos.innerHTML=equipamentos.length;
+
+    totalDesktop.innerHTML=
+
+        equipamentos.filter(
+
+            x=>x.categoria==="Desktop"
+
+        ).length;
+
+    totalNotebook.innerHTML=
+
+        equipamentos.filter(
+
+            x=>x.categoria==="Notebook"
+
+        ).length;
+
+    totalMonitor.innerHTML=
+
+        equipamentos.filter(
+
+            x=>x.categoria==="Monitor"
+
+        ).length;
 
 }
 
 /*==========================================================
-VISUALIZAR
+PESQUISA
 ==========================================================*/
 
-window.visualizarEquipamento = function(id){
+function pesquisarEquipamentos(){
 
-    const equipamento = equipamentos.find(x => x.id === id);
+    const texto=
 
-    if(!equipamento) return;
+        txtPesquisar.value
 
-    document.getElementById("detalhesEquipamento").innerHTML = `
+        .toLowerCase()
 
-        <table style="width:100%;border-collapse:collapse;">
+        .trim();
 
-            <tr>
+    const categoria=
 
-                <td><strong>Patrimônio</strong></td>
+        cmbCategoria.value;
 
-                <td>${equipamento.patrimonio}</td>
+    equipamentosFiltrados=
 
-            </tr>
+        equipamentos.filter(item=>{
 
-            <tr>
+            const pesquisa=
 
-                <td><strong>Equipamento</strong></td>
+                item.patrimonio.toLowerCase().includes(texto)
 
-                <td>${equipamento.nomePC}</td>
+                ||
 
-            </tr>
+                item.equipamento.toLowerCase().includes(texto)
 
-            <tr>
+                ||
 
-                <td><strong>Serial</strong></td>
+                item.modelo.toLowerCase().includes(texto)
 
-                <td>${equipamento.serial}</td>
+                ||
 
-            </tr>
+                item.loja.toLowerCase().includes(texto);
 
-            <tr>
+            const filtroCategoria=
 
-                <td><strong>Processador</strong></td>
+                categoria===""
 
-                <td>${equipamento.processador}</td>
+                ||
 
-            </tr>
+                item.categoria===categoria;
 
-            <tr>
+            return pesquisa && filtroCategoria;
 
-                <td><strong>Memória</strong></td>
+        });
 
-                <td>${equipamento.ram}</td>
-
-            </tr>
-
-            <tr>
-
-                <td><strong>Armazenamento</strong></td>
-
-                <td>${equipamento.armazenamento}</td>
-
-            </tr>
-
-            <tr>
-
-                <td><strong>Sistema</strong></td>
-
-                <td>${equipamento.sistema}</td>
-
-            </tr>
-
-            <tr>
-
-                <td><strong>Observações</strong></td>
-
-                <td>${equipamento.observacoes}</td>
-
-            </tr>
-
-        </table>
-
-    `;
-
-    document
-        .getElementById("modalDetalhes")
-        .classList
-        .add("show");
+    preencherTabela();
 
 }
-
 /*==========================================================
-SOLICITAR
+EVENTOS
 ==========================================================*/
 
-window.solicitarEquipamento = function(id){
+btnAtualizar.addEventListener("click",()=>{
 
-    const equipamento = equipamentos.find(x => x.id === id);
-
-    if(!equipamento) return;
-
-    mostrarToast(
-
-        "Equipamento selecionado para solicitação."
-
-    );
-
-    // Na próxima etapa:
-    // abrir solicitacoes.html
-    // enviando o equipamento selecionado
-
-}
-
-/*==========================================================
-FECHAR MODAL
-==========================================================*/
-
-document
-.getElementById("fecharModal")
-.addEventListener("click",()=>{
-
-    document
-    .getElementById("modalDetalhes")
-    .classList
-    .remove("show");
+    carregarEquipamentos();
 
 });
 
-document
-.getElementById("modalDetalhes")
-.addEventListener("click",(e)=>{
+btnPesquisar.addEventListener("click",()=>{
 
-    if(e.target.id==="modalDetalhes"){
+    pesquisarEquipamentos();
 
-        document
-        .getElementById("modalDetalhes")
-        .classList
-        .remove("show");
+});
 
-    }
+txtPesquisar.addEventListener("keyup",()=>{
+
+    pesquisarEquipamentos();
+
+});
+
+cmbCategoria.addEventListener("change",()=>{
+
+    pesquisarEquipamentos();
 
 });
 
 /*==========================================================
-ESC
+ATUALIZAÇÃO AUTOMÁTICA
 ==========================================================*/
 
-document.addEventListener("keydown",(e)=>{
+setInterval(()=>{
 
-    if(e.key==="Escape"){
+    carregarEquipamentos();
 
-        document
-        .getElementById("modalDetalhes")
-        .classList
-        .remove("show");
+},10000);
 
-    }
+/*==========================================================
+FECHAMENTO
+==========================================================*/
 
-});
 </script>
 
 </script>
