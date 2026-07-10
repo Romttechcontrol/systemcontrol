@@ -1907,6 +1907,8 @@ async function carregarEquipamentos(){
 
     try{
 
+        console.log("1 - Consultando manutenção...");
+
         const manutencoes=query(
 
             collection(db,"manutencao"),
@@ -1917,9 +1919,15 @@ async function carregarEquipamentos(){
 
         const snapshot=await getDocs(manutencoes);
 
+        console.log("2 - Quantidade encontrada:", snapshot.size);
+
         for(const documento of snapshot.docs){
 
             const manutencao=documento.data();
+
+            console.log("3 - Documento:", documento.id);
+
+            console.log("4 - pcId:", manutencao.pcId);
 
             if(!manutencao.pcId){
 
@@ -1939,6 +1947,8 @@ async function carregarEquipamentos(){
 
             const computadorSnap=await getDoc(computadorRef);
 
+            console.log("5 - Computador existe:", computadorSnap.exists());
+
             if(!computadorSnap.exists()){
 
                 continue;
@@ -1947,9 +1957,13 @@ async function carregarEquipamentos(){
 
             const computador=computadorSnap.data();
 
+            console.log("6 - Nome PC:", computador.nomePC);
+
             let nomeLoja="-";
 
             if(computador.lojaId){
+
+                console.log("7 - Loja ID:", computador.lojaId);
 
                 const lojaRef=doc(
 
@@ -1962,6 +1976,8 @@ async function carregarEquipamentos(){
                 );
 
                 const lojaSnap=await getDoc(lojaRef);
+
+                console.log("8 - Loja existe:", lojaSnap.exists());
 
                 if(lojaSnap.exists()){
 
