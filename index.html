@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<!--==========================================================
+ROMTECH CONTROLE
+INDEX.HTML
+VERSÃO 3.0
+===========================================================-->
+
+<head>
+
+<!--==========================================================
+META TAGS
+===========================================================-->
+
+<meta charset="UTF-8">
+
+<meta
+
+    name="viewport"
+
+    content="width=device-width, initial-scale=1.0">
+
+<meta
+
+    http-equiv="X-UA-Compatible"
+
+    content="IE=edge">
+
+<meta
+
+    name="description"
+
+    content="RomTech Controle - Dashboard Corporativo">
+
+<meta
+
+    name="author"
+
+    content="RomTech">
+
+<meta
+
+    name="theme-color"
+
+    content="#0D4D86">
+
+<title>
+
+RomTech Controle • Dashboard
+
+</title>
+
+<!--==========================================================
+CSS PRINCIPAL
+===========================================================-->
+
+<link
+
+    rel="stylesheet"
+
+    href="css/style.css">
+
+<!--==========================================================
+GOOGLE FONTS
+===========================================================-->
+
+<link
+
+    rel="preconnect"
+
+    href="https://fonts.googleapis.com">
+
+<link
+
+    rel="preconnect"
+
+    href="https://fonts.gstatic.com"
+
+    crossorigin>
+
+<link
+
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+
+    rel="stylesheet">
+
+<!--==========================================================
+FONT AWESOME
+===========================================================-->
+
+<link
+
+    rel="stylesheet"
+
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!--==========================================================
+ESTILOS DA PÁGINA
+===========================================================-->
+
+<style>
+
+/*==========================================================
+RESET
+==========================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Inter",sans-serif;
+
+    background:#F5F7FB;
+
+    color:#263238;
+
+}
+
+/*==========================================================
+SIDEBAR
+==========================================================*/
+
+.sidebar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:250px;
+
+    height:100vh;
+
+    padding:22px;
+
+    background:#0D4D86;
+
+    color:#FFFFFF;
+
+}
+
+.logo{
+
+    margin-bottom:35px;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+.menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:13px 15px;
+
+    margin-bottom:8px;
+
+    color:#FFFFFF;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    transition:.2s;
+
+}
+
+.menu a:hover,
+
+.menu a.active{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/*==========================================================
+CONTEÚDO
+==========================================================*/
+
+.content{
+
+    margin-left:250px;
+
+    padding:25px;
+
+}
+
+.header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 25px;
+
+    background:#FFFFFF;
+
+    border-radius:14px;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+}
+
+.user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.avatar{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:#0D4D86;
+
+    color:#FFFFFF;
+
+    font-weight:bold;
+
+}/*==========================================================
+ETAPAS
+==========================================================*/
+
+.steps{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:15px;
+
+    margin:25px 0;
+
+}
+
+.step,
+
+.card,
+
+.panel{
+
+    padding:18px;
+
+    background:#FFFFFF;
+
+    border-radius:14px;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.step small{
+
+    color:#777777;
+
+}
+
+/*==========================================================
+CARDS
+==========================================================*/
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:15px;
+
+}
+
+.card h2{
+
+    margin-bottom:6px;
+
+    color:#0D4D86;
+
+}
+
+/*==========================================================
+PAINÉIS
+==========================================================*/
+
+.bottom{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:20px;
+
+    margin-top:20px;
+
+}
+
+/*==========================================================
+TABELAS
+==========================================================*/
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+th,
+td{
+
+    padding:12px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    border-bottom:1px solid #EEEEEE;
+
+}
+
+/*==========================================================
+STATUS
+==========================================================*/
+
+.badge{
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    background:#D1FAE5;
+
+    color:#166534;
+
+    font-size:12px;
+
+}
+
+/*==========================================================
+RODAPÉ
+==========================================================*/
+
+footer{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    color:#888888;
+
+}
+
+/*==========================================================
+RESPONSIVIDADE
+==========================================================*/
+
+@media(max-width:1100px){
+
+    .steps,
+
+    .cards,
+
+    .bottom{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .content{
+
+        margin-left:0;
+
+    }
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!--==========================================================
+SIDEBAR
+===========================================================-->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        ROMTECH
+
+    </div>
+
+    <!--======================================================
+    MENU
+    =======================================================-->
+
+    <nav class="menu">
+
+        <a
+
+            class="active"
+
+            href="index.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Dashboard
+
+        </a>
+
+        <a href="prateleira.html">
+
+            <i class="fa-solid fa-box"></i>
+
+            Prateleira Virtual
+
+        </a>
+
+        <a href="solicitacoes.html">
+
+            <i class="fa-solid fa-file-circle-plus"></i>
+
+            Solicitações
+
+        </a>
+
+        <a href="transferencias.html">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            Transferências
+
+        </a>
+
+        <a href="rastreios.html">
+
+            <i class="fa-solid fa-route"></i>
+
+            Rastreios
+
+        </a>
+
+        <a href="baixa.html">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            Baixa de Entrega
+
+        </a>
+
+        <a href="compras.html">
+
+            <i class="fa-solid fa-cart-shopping"></i>
+
+            Compras
+
+        </a>
+
+        <a href="patrimonio.html">
+
+            <i class="fa-solid fa-desktop"></i>
+
+            Patrimônio
+
+        </a>
+
+        <a href="relatorios.html">
+
+            <i class="fa-solid fa-chart-column"></i>
+
+            Relatórios
+
+        </a>
+
+        <a href="configuracoes.html">
+
+            <i class="fa-solid fa-gear"></i>
+
+            Configurações
+
+        </a>
+
+    </nav>
+
+</aside>
+
+<!--==========================================================
+CONTEÚDO
+===========================================================-->
+
+<main class="content">
+    <!--==========================================================
+HEADER
+===========================================================-->
+
+<header class="header">
+
+    <!--======================================================
+    TÍTULO
+    =======================================================-->
+
+    <div>
+
+        <h2>
+
+            Dashboard
+
+        </h2>
+
+        <p>
+
+            Bem-vindo ao Sistema de Solicitações RomTech
+
+        </p>
+
+    </div>
+
+    <!--======================================================
+    USUÁRIO
+    =======================================================-->
+
+    <div class="user">
+
+        <i class="fa-regular fa-bell"></i>
+
+        <div
+
+            class="avatar"
+
+            id="avatarUsuario">
+
+            --
+
+        </div>
+
+        <div>
+
+            <strong id="nomeUsuario">
+
+                Carregando...
+
+            </strong>
+
+            <br>
+
+            <small id="perfilUsuario">
+
+                Carregando...
+
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+<!--==========================================================
+ETAPAS
+===========================================================-->
+
+<section class="steps">
+
+    <div class="step">
+
+        <h4>
+
+            1. RomTech
+
+        </h4>
+
+        <small>
+
+            Recebe equipamentos
+
+        </small>
+
+    </div>
+
+    <div class="step">
+
+        <h4>
+
+            2. Suprimentos
+
+        </h4>
+
+        <small>
+
+            Aprova solicitações
+
+        </small>
+
+    </div>
+
+    <div class="step">
+
+        <h4>
+
+            3. Transferência
+
+        </h4>
+
+        <small>
+
+            Envio às lojas
+
+        </small>
+
+    </div>
+
+    <div class="step">
+
+        <h4>
+
+            4. Baixa
+
+        </h4>
+
+        <small>
+
+            Confirma recebimento
+
+        </small>
+
+    </div>
+
+    <div class="step">
+
+        <h4>
+
+            5. Controle
+
+        </h4>
+
+        <small>
+
+            Rastreabilidade
+
+        </small>
+
+    </div>
+
+</section>
+
+<!--==========================================================
+CARDS
+===========================================================-->
+
+<section class="cards">
+
+    <div class="card">
+
+        <h2 id="disp">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Equipamentos Disponíveis
+
+        </span>
+
+    </div>
+
+    <div class="card">
+
+        <h2 id="sol">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Solicitações Pendentes
+
+        </span>
+
+    </div>
+
+    <div class="card">
+
+        <h2 id="tran">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Transferências
+
+        </span>
+
+    </div>
+
+    <div class="card">
+
+        <h2 id="comp">
+
+            0
+
+        </h2>
+
+        <span>
+
+            Compras Pendentes
+
+        </span>
+
+    </div>
+
+</section>
+<!--==========================================================
+PAINÉIS
+===========================================================-->
+
+<section class="bottom">
+
+    <!--======================================================
+    ÚLTIMAS SOLICITAÇÕES
+    =======================================================-->
+
+    <div class="panel">
+
+        <h3>
+
+            Últimas Solicitações
+
+        </h3>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>
+
+                        Loja
+
+                    </th>
+
+                    <th>
+
+                        Equipamento
+
+                    </th>
+
+                    <th>
+
+                        Status
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tbSolicitacoes">
+
+                <tr>
+
+                    <td>
+
+                        Matriz
+
+                    </td>
+
+                    <td>
+
+                        Dell OptiPlex
+
+                    </td>
+
+                    <td>
+
+                        <span class="badge">
+
+                            Pendente
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!--======================================================
+    AÇÕES RÁPIDAS
+    =======================================================-->
+
+    <div class="panel">
+
+        <h3>
+
+            Ações Rápidas
+
+        </h3>
+
+        <br>
+
+        <p>
+
+            <a href="prateleira.html">
+
+                📦 Abrir Prateleira Virtual
+
+            </a>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <a href="solicitacoes.html">
+
+                📝 Nova Solicitação
+
+            </a>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <a href="transferencias.html">
+
+                🚚 Transferências
+
+            </a>
+
+        </p>
+
+        <br>
+
+        <p>
+
+            <a href="relatorios.html">
+
+                📊 Relatórios
+
+            </a>
+
+        </p>
+
+    </div>
+
+</section>
+
+<!--==========================================================
+RODAPÉ
+===========================================================-->
+
+<footer>
+
+    RomTech Gestão de Equipamentos •
+
+    <span id="versaoSistema">
+
+        Dashboard v3.0.0
+
+    </span>
+
+</footer>
+
+</main>
+
+<!--==========================================================
+LOADING
+===========================================================-->
+
+<div
+
+    id="loading"
+
+    class="loading-overlay"
+
+    style="display:none;">
+
+    <div class="loading-card">
+
+        <div class="spinner"></div>
+
+        <p>
+
+            Carregando...
+
+        </p>
+
+    </div>
+
+</div>
+
+<!--==========================================================
+TOAST
+===========================================================-->
+
+<div
+
+    id="toast"
+
+    class="toast">
+
+</div>
+<!--==========================================================
+JAVASCRIPT
+===========================================================-->
+
+<script
+
+    type="module"
+
+    src="js/main.js">
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Usuários</title>
+
+<link rel="icon" href="assets/img/favicon.png">
+
+<!-- CSS -->
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<!-- Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<!--=========================================================
+LOADER
+Criado automaticamente pelo ui.js
+==========================================================-->
+
+<!--=========================================================
+SIDEBAR
+==========================================================-->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <img
+        src="assets/img/logo.png"
+        alt="RomTech">
+
+        <h2>RomTech</h2>
+
+    </div>
+
+    <nav>
+
+        <ul>
+
+            <li>
+
+                <a href="index.html">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Dashboard
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="usuarios.html"
+                class="active">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    Usuários
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="compras.html">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    Compras
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="patrimonio.html">
+
+                    <i class="fa-solid fa-computer"></i>
+
+                    Patrimônio
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="transferencias.html">
+
+                    <i class="fa-solid fa-right-left"></i>
+
+                    Transferências
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="prateleira.html">
+
+                    <i class="fa-solid fa-boxes-stacked"></i>
+
+                    Prateleira
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="configuracoes.html">
+
+                    <i class="fa-solid fa-gears"></i>
+
+                    Configurações
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<!--=========================================================
+CONTAINER
+==========================================================-->
+
+<div class="main-container">
+
+    <!--=====================================================
+    HEADER
+    ======================================================-->
+
+    <header class="topbar">
+
+        <div class="topbar-left">
+
+            <button
+            id="btnMenu"
+            class="btn-icon">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <h1>
+
+                Gestão de Usuários
+
+            </h1>
+
+        </div>
+
+        <div class="topbar-right">
+
+            <button
+            id="btnNotificacoes"
+            class="btn-icon">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span
+                id="notificationBadge"
+                class="badge">
+
+                </span>
+
+            </button>
+
+            <div class="usuario-info">
+
+                <strong
+                id="usuarioNome">
+
+                </strong>
+
+                <small
+                id="usuarioCargo">
+
+                </small>
+
+            </div>
+
+            <button
+            id="btnLogout"
+            class="btn btn-danger">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Sair
+
+            </button>
+
+        </div>
+
+    </header>
+
+    <!--=====================================================
+    CONTEÚDO
+    ======================================================-->
+
+    <main class="content">
+
+       <!--=========================================================
+CARDS
+==========================================================-->
+
+<section class="cards-grid">
+
+    <div class="card-dashboard">
+
+        <div class="card-icon blue">
+
+            <i class="fa-solid fa-users"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Total de Usuários</span>
+
+            <h2 id="cardTotalUsuarios">0</h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon green">
+
+            <i class="fa-solid fa-user-check"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Usuários Ativos</span>
+
+            <h2 id="cardUsuariosAtivos">0</h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon red">
+
+            <i class="fa-solid fa-user-xmark"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Usuários Inativos</span>
+
+            <h2 id="cardUsuariosInativos">0</h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon purple">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Administradores</span>
+
+            <h2 id="cardAdministradores">0</h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+RESUMO
+==========================================================-->
+
+<section class="painel-resumo">
+
+    <div class="card-resumo">
+
+        <div>
+
+            <h3>
+
+                Gestão de Usuários
+
+            </h3>
+
+            <p>
+
+                Controle completo de usuários, perfis,
+                permissões e acessos do sistema.
+
+            </p>
+
+        </div>
+
+        <button
+
+            id="btnNovoUsuario"
+
+            class="btn btn-primary">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Novo Usuário
+
+        </button>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+TOOLBAR
+==========================================================-->
+
+<section class="toolbar">
+
+    <div class="toolbar-left">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+
+                type="text"
+
+                id="txtPesquisar"
+
+                placeholder="Pesquisar usuário..."
+
+            >
+
+        </div>
+
+        <select id="cmbFiltroPerfil">
+
+            <option value="">
+
+                Todos os Perfis
+
+            </option>
+
+        </select>
+
+        <select id="cmbFiltroStatus">
+
+            <option value="">
+
+                Todos Status
+
+            </option>
+
+            <option value="ativo">
+
+                Ativo
+
+            </option>
+
+            <option value="inativo">
+
+                Inativo
+
+            </option>
+
+        </select>
+
+        <select id="cmbFiltroLoja">
+
+            <option value="">
+
+                Todas as Lojas
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="toolbar-right">
+
+        <button
+
+            id="btnAtualizar"
+
+            class="btn btn-secondary">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Atualizar
+
+        </button>
+
+        <button
+
+            id="btnLimparFiltros"
+
+            class="btn btn-warning">
+
+            <i class="fa-solid fa-filter-circle-xmark"></i>
+
+            Limpar
+
+        </button>
+
+        <button
+
+            id="btnExcel"
+
+            class="btn btn-success">
+
+            <i class="fa-solid fa-file-excel"></i>
+
+            Excel
+
+        </button>
+
+        <button
+
+            id="btnPDF"
+
+            class="btn btn-danger">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            PDF
+
+        </button>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+AÇÕES EM LOTE
+==========================================================-->
+
+<section class="acoes-lote">
+
+    <button
+
+        id="btnAtivarSelecionados"
+
+        class="btn btn-success">
+
+        <i class="fa-solid fa-user-check"></i>
+
+        Ativar
+
+    </button>
+
+    <button
+
+        id="btnInativarSelecionados"
+
+        class="btn btn-warning">
+
+        <i class="fa-solid fa-user-lock"></i>
+
+        Inativar
+
+    </button>
+
+    <button
+
+        id="btnResetSenha"
+
+        class="btn btn-secondary">
+
+        <i class="fa-solid fa-key"></i>
+
+        Reset Senha
+
+    </button>
+
+    <button
+
+        id="btnExcluirSelecionados"
+
+        class="btn btn-danger">
+
+        <i class="fa-solid fa-trash"></i>
+
+        Excluir
+
+    </button>
+
+</section>
+
+<!--=========================================================
+TABELA DE USUÁRIOS
+==========================================================-->
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+
+            <i class="fa-solid fa-users"></i>
+
+            Usuários Cadastrados
+
+        </h2>
+
+        <span id="contadorUsuarios">
+
+            0 registros
+
+        </span>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table
+
+            id="tabelaUsuarios"
+
+            class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th width="40">
+
+                        <input
+
+                            type="checkbox"
+
+                            id="checkTodos">
+
+                    </th>
+
+                    <th onclick="ordenarUsuarios('nome')">
+
+                        Nome
+
+                        <i class="fa-solid fa-sort"></i>
+
+                    </th>
+
+                    <th onclick="ordenarUsuarios('email')">
+
+                        E-mail
+
+                        <i class="fa-solid fa-sort"></i>
+
+                    </th>
+
+                    <th onclick="ordenarUsuarios('cargo')">
+
+                        Cargo
+
+                        <i class="fa-solid fa-sort"></i>
+
+                    </th>
+
+                    <th onclick="ordenarUsuarios('perfil')">
+
+                        Perfil
+
+                        <i class="fa-solid fa-sort"></i>
+
+                    </th>
+
+                    <th onclick="ordenarUsuarios('loja')">
+
+                        Loja
+
+                        <i class="fa-solid fa-sort"></i>
+
+                    </th>
+
+                    <th>
+
+                        Status
+
+                    </th>
+
+                    <th>
+
+                        Último Acesso
+
+                    </th>
+
+                    <th width="230">
+
+                        Ações
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tbodyUsuarios">
+
+                <tr>
+
+                    <td
+
+                        colspan="9"
+
+                        class="text-center">
+
+                        Carregando usuários...
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+MODAL USUÁRIO
+==========================================================-->
+
+<div id="modalUsuario" class="modal">
+
+    <div class="modal-content modal-lg">
+
+        <div class="modal-header">
+
+            <h2 id="tituloModal">
+
+                Novo Usuário
+
+            </h2>
+
+            <button
+
+                class="btn-close"
+
+                onclick="ui.modal.fechar('modalUsuario')">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input
+                type="hidden"
+                id="txtId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Nome *</label>
+
+                    <input
+                        type="text"
+                        id="txtNome"
+                        class="input"
+                        maxlength="100">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>E-mail *</label>
+
+                    <input
+                        type="email"
+                        id="txtEmail"
+                        class="input">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Senha *</label>
+
+                    <input
+                        type="password"
+                        id="txtSenha"
+                        class="input">
+
+                    <small>
+
+                        Na edição deixe em branco para manter a senha atual.
+
+                    </small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Cargo *</label>
+
+                    <input
+                        type="text"
+                        id="txtCargo"
+                        class="input">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Perfil *</label>
+
+                    <select
+                        id="cmbPerfil"
+                        class="input">
+
+                        <option value="">
+
+                            Carregando...
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Loja *</label>
+
+                    <select
+                        id="cmbLoja"
+                        class="input">
+
+                        <option value="">
+
+                            Carregando...
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select
+                        id="cmbStatus"
+                        class="input">
+
+                        <option value="ativo">
+
+                            Ativo
+
+                        </option>
+
+                        <option value="inativo">
+
+                            Inativo
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Telefone</label>
+
+                    <input
+                        type="text"
+                        id="txtTelefone"
+                        class="input">
+
+                </div>
+
+                <div class="form-group full-width">
+
+                    <label>Observações</label>
+
+                    <textarea
+
+                        id="txtObservacao"
+
+                        rows="4"
+
+                        class="input"
+
+                        placeholder="Observações sobre este usuário...">
+
+                    </textarea>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+
+                class="btn btn-light"
+
+                onclick="limparFormulario()">
+
+                <i class="fa-solid fa-eraser"></i>
+
+                Limpar
+
+            </button>
+
+            <button
+
+                class="btn btn-secondary"
+
+                onclick="ui.modal.fechar('modalUsuario')">
+
+                <i class="fa-solid fa-ban"></i>
+
+                Cancelar
+
+            </button>
+
+            <button
+
+                id="btnSalvarUsuario"
+
+                class="btn btn-primary">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Salvar Usuário
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+<!--=========================================================
+DASHBOARD ANALÍTICO
+==========================================================-->
+
+<section class="dashboard-grid">
+
+    <!--======================
+    GRÁFICO PERFIS
+    =======================-->
+
+    <div class="card-dashboard-large">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class="fa-solid fa-user-shield"></i>
+
+                Usuários por Perfil
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <canvas
+
+                id="graficoPerfis"
+
+                height="260">
+
+            </canvas>
+
+        </div>
+
+    </div>
+
+    <!--======================
+    GRÁFICO STATUS
+    =======================-->
+
+    <div class="card-dashboard-large">
+
+        <div class="card-header">
+
+            <h3>
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Situação dos Usuários
+
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+
+            <canvas
+
+                id="graficoStatus"
+
+                height="260">
+
+            </canvas>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+ÚLTIMOS ACESSOS
+==========================================================-->
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <h2>
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            Últimos Acessos
+
+        </h2>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Nome</th>
+
+                    <th>E-mail</th>
+
+                    <th>Perfil</th>
+
+                    <th>Último Acesso</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tbodyUltimosAcessos">
+
+                <tr>
+
+                    <td
+
+                        colspan="4"
+
+                        class="text-center">
+
+                        Nenhum acesso registrado.
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+INDICADORES
+==========================================================-->
+
+<section class="cards-grid">
+
+    <div class="card-dashboard">
+
+        <div class="card-icon blue">
+
+            <i class="fa-solid fa-user-clock"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Último Cadastro</span>
+
+            <h3 id="cardUltimoCadastro">
+
+                --
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon green">
+
+            <i class="fa-solid fa-user-gear"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Perfil Mais Utilizado</span>
+
+            <h3 id="cardPerfilPopular">
+
+                --
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon orange">
+
+            <i class="fa-solid fa-building"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Loja com Mais Usuários</span>
+
+            <h3 id="cardLojaPopular">
+
+                --
+
+            </h3>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon purple">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>Última Atualização</span>
+
+            <h3 id="cardUltimaAtualizacao">
+
+                --
+
+            </h3>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+LOGS DO MÓDULO
+==========================================================-->
+
+<section class="table-card">
+
+    <div class="table-header">
+
+        <div>
+
+            <h2>
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Auditoria de Usuários
+
+            </h2>
+
+            <small>
+
+                Histórico das últimas operações realizadas.
+
+            </small>
+
+        </div>
+
+        <button
+
+            id="btnAtualizarLogs"
+
+            class="btn btn-secondary">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Atualizar
+
+        </button>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table
+
+            id="tabelaLogs"
+
+            class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th width="170">
+
+                        Data
+
+                    </th>
+
+                    <th>
+
+                        Usuário
+
+                    </th>
+
+                    <th>
+
+                        Operação
+
+                    </th>
+
+                    <th>
+
+                        Módulo
+
+                    </th>
+
+                    <th>
+
+                        Descrição
+
+                    </th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="tbodyLogs">
+
+                <tr>
+
+                    <td
+
+                        colspan="5"
+
+                        class="text-center">
+
+                        Nenhum log encontrado.
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+RODAPÉ
+==========================================================-->
+
+<footer class="page-footer">
+
+    <div>
+
+        <strong>
+
+            RomTech Controle
+
+        </strong>
+
+        <span>
+
+            Gestão Inteligente de TI
+
+        </span>
+
+    </div>
+
+    <div>
+
+        Versão
+
+        <span id="versaoSistema">
+
+            2.0
+
+        </span>
+
+    </div>
+
+</footer>
+<!--=========================================================
+EXPORTAÇÕES
+==========================================================-->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>
+
+            <i class="fa-solid fa-file-export"></i>
+
+            Exportações
+
+        </h2>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="export-grid">
+
+            <button
+
+                id="btnCSV"
+
+                class="btn btn-primary">
+
+                <i class="fa-solid fa-file-csv"></i>
+
+                Exportar CSV
+
+            </button>
+
+            <button
+
+                id="btnJSON"
+
+                class="btn btn-info">
+
+                <i class="fa-solid fa-code"></i>
+
+                Exportar JSON
+
+            </button>
+
+            <button
+
+                id="btnBackup"
+
+                class="btn btn-warning">
+
+                <i class="fa-solid fa-database"></i>
+
+                Backup
+
+            </button>
+
+            <button
+
+                id="btnPrint"
+
+                class="btn btn-secondary">
+
+                <i class="fa-solid fa-print"></i>
+
+                Imprimir
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+ESTATÍSTICAS
+==========================================================-->
+
+<section class="cards-grid">
+
+    <div class="card-dashboard">
+
+        <div class="card-icon blue">
+
+            <i class="fa-solid fa-building"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>
+
+                Total de Lojas
+
+            </span>
+
+            <h2 id="cardTotalLojas">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon green">
+
+            <i class="fa-solid fa-user-tie"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>
+
+                Gestores
+
+            </span>
+
+            <h2 id="cardGestores">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon orange">
+
+            <i class="fa-solid fa-user-shield"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>
+
+                Administradores
+
+            </span>
+
+            <h2 id="cardAdmins">
+
+                0
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="card-dashboard">
+
+        <div class="card-icon red">
+
+            <i class="fa-solid fa-user-clock"></i>
+
+        </div>
+
+        <div class="card-info">
+
+            <span>
+
+                Último Login
+
+            </span>
+
+            <h2 id="cardUltimoLogin">
+
+                --
+
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+BARRA INFERIOR
+==========================================================-->
+
+<section class="toolbar bottom-toolbar">
+
+    <div class="toolbar-right">
+
+        <button
+
+            class="btn btn-success"
+
+            id="btnNovoUsuarioRodape">
+
+            <i class="fa-solid fa-user-plus"></i>
+
+            Novo Usuário
+
+        </button>
+
+        <button
+
+            class="btn btn-secondary"
+
+            id="btnAtualizarRodape">
+
+            <i class="fa-solid fa-rotate"></i>
+
+            Atualizar
+
+        </button>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+PAINEL DE STATUS
+==========================================================-->
+
+<section class="system-status">
+
+    <div class="status-card">
+
+        <div class="status-icon success">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+        </div>
+
+        <div class="status-info">
+
+            <span>Sistema</span>
+
+            <strong id="statusSistema">
+
+                Online
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <div class="status-card">
+
+        <div class="status-icon primary">
+
+            <i class="fa-solid fa-server"></i>
+
+        </div>
+
+        <div class="status-info">
+
+            <span>Firebase</span>
+
+            <strong id="statusFirebase">
+
+                Conectado
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <div class="status-card">
+
+        <div class="status-icon warning">
+
+            <i class="fa-solid fa-user-clock"></i>
+
+        </div>
+
+        <div class="status-info">
+
+            <span>Sessão</span>
+
+            <strong id="statusSessao">
+
+                Ativa
+
+            </strong>
+
+        </div>
+
+    </div>
+
+    <div class="status-card">
+
+        <div class="status-icon info">
+
+            <i class="fa-solid fa-clock"></i>
+
+        </div>
+
+        <div class="status-info">
+
+            <span>Última Atualização</span>
+
+            <strong id="ultimaAtualizacao">
+
+                --
+
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+MENSAGENS DO SISTEMA
+==========================================================-->
+
+<section class="card">
+
+    <div class="card-header">
+
+        <h2>
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            Informações
+
+        </h2>
+
+    </div>
+
+    <div class="card-body">
+
+        <div id="painelMensagens">
+
+            <div class="empty-state">
+
+                <i class="fa-solid fa-user-group fa-3x"></i>
+
+                <h3>
+
+                    Gestão de Usuários
+
+                </h3>
+
+                <p>
+
+                    Utilize esta tela para cadastrar, editar,
+                    pesquisar, ativar, inativar e gerenciar
+                    os usuários do RomTech Controle.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--=========================================================
+ESPAÇAMENTO FINAL
+==========================================================-->
+
+<div style="height:40px;"></div>
+
+<!--=========================================================
+RODAPÉ DO MÓDULO
+==========================================================-->
+
+<footer class="module-footer">
+
+    <div class="footer-left">
+
+        <img
+
+            src="assets/img/logo.png"
+
+            alt="RomTech"
+
+            class="footer-logo">
+
+        <div>
+
+            <strong>
+
+                RomTech Controle
+
+            </strong>
+
+            <p>
+
+                Sistema Corporativo de Gestão de TI
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-center">
+
+        <span>
+
+            Desenvolvido por
+
+            <strong>
+
+                RomTech
+
+            </strong>
+
+        </span>
+
+    </div>
+
+    <div class="footer-right">
+
+        <div>
+
+            <small>
+
+                Versão
+
+            </small>
+
+        </div>
+
+        <div>
+
+            <small>
+
+                Ambiente
+
+            </small>
+
+            <strong>
+
+                Produção
+
+            </strong>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!--=========================================================
+BOTÃO VOLTAR AO TOPO
+==========================================================-->
+
+<button
+
+    id="btnTopo"
+
+    class="btn-top"
+
+    title="Voltar ao topo">
+
+    <i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!--=========================================================
+MENU FLUTUANTE
+==========================================================-->
+
+<div class="floating-actions">
+
+    <button
+
+        class="btn-floating btn-primary"
+
+        id="btnNovoUsuarioFloat"
+
+        title="Novo Usuário">
+
+        <i class="fa-solid fa-user-plus"></i>
+
+    </button>
+
+    <button
+
+        class="btn-floating btn-success"
+
+        id="btnAtualizarFloat"
+
+        title="Atualizar">
+
+        <i class="fa-solid fa-rotate"></i>
+
+    </button>
+
+</div>
+
+<!--=========================================================
+VERSÃO DO SISTEMA
+==========================================================-->
+
+<div class="system-version">
+
+    RomTech Controle • v2.0
+
+</div>
+
+    </main>
+
+</div>
+
+<!--=========================================================
+SCRIPTS
+==========================================================-->
+
+<script type="module" src="js/firebase.js"></script>
+
+<script type="module" src="js/auth.js"></script>
+
+<script type="module" src="js/ui.js"></script>
+
+<script type="module" src="js/main.js"></script>
+
+<script type="module" src="js/usuarios.js"></script>
+
+</body>
+
+</html>

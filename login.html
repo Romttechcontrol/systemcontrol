@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<!--==========================================================
+ROMTECH CONTROLE
+LOGIN.HTML
+VERSÃO 3.0
+===========================================================-->
+
+<head>
+
+<!--==========================================================
+META TAGS
+===========================================================-->
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+<meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge">
+
+<meta
+    name="description"
+    content="RomTech Controle - Sistema Corporativo de Gestão de Equipamentos">
+
+<meta
+    name="author"
+    content="RomTech">
+
+<meta
+    name="theme-color"
+    content="#0B4F8A">
+
+<title>
+
+RomTech Controle • Login
+
+</title>
+
+<!--==========================================================
+GOOGLE FONTS
+===========================================================-->
+
+<link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+<link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+<!--==========================================================
+FONT AWESOME
+===========================================================-->
+
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!--==========================================================
+ESTILOS
+===========================================================-->
+
+<style>
+
+/*==========================================================
+RESET
+==========================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+    font-family:"Inter",sans-serif;
+
+}
+
+html,
+body{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    background:#0A2340;
+
+}
+
+/*==========================================================
+BACKGROUND
+==========================================================*/
+
+body{
+
+    position:relative;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        #061B33 0%,
+
+        #0B4F8A 50%,
+
+        #0E67B4 100%
+
+    );
+
+}
+
+/*==========================================================
+EFEITO GRID
+==========================================================*/
+
+body::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    linear-gradient(
+
+        rgba(255,255,255,.03) 1px,
+
+        transparent 1px
+
+    ),
+
+    linear-gradient(
+
+        90deg,
+
+        rgba(255,255,255,.03) 1px,
+
+        transparent 1px
+
+    );
+
+    background-size:45px 45px;
+
+    animation:gridMove 25s linear infinite;
+
+    opacity:.55;
+
+}
+
+@keyframes gridMove{
+
+    0%{
+
+        transform:translate(0,0);
+
+    }
+
+    100%{
+
+        transform:translate(45px,45px);
+
+    }
+
+}
+/*==========================================================
+PARTÍCULAS
+==========================================================*/
+
+.particles{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    animation:float 18s linear infinite;
+
+}
+
+.circle:nth-child(1){
+
+    width:180px;
+
+    height:180px;
+
+    top:12%;
+
+    left:-60px;
+
+}
+
+.circle:nth-child(2){
+
+    width:90px;
+
+    height:90px;
+
+    top:20%;
+
+    right:10%;
+
+}
+
+.circle:nth-child(3){
+
+    width:220px;
+
+    height:220px;
+
+    bottom:-100px;
+
+    right:-80px;
+
+}
+
+.circle:nth-child(4){
+
+    width:120px;
+
+    height:120px;
+
+    bottom:8%;
+
+    left:22%;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-25px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================================
+CONTAINER PRINCIPAL
+==========================================================*/
+
+.container{
+
+    position:relative;
+
+    z-index:5;
+
+    display:flex;
+
+    width:100%;
+
+    height:100vh;
+
+}
+
+/*==========================================================
+LADO ESQUERDO
+==========================================================*/
+
+.left{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:70px;
+
+    color:#FFFFFF;
+
+}
+
+.left-content{
+
+    max-width:620px;
+
+    animation:fadeLeft .8s;
+
+}
+
+/*==========================================================
+LOGO
+==========================================================*/
+
+.logo{
+
+    margin-bottom:40px;
+
+}
+
+.logo img{
+
+    width:260px;
+
+    max-width:100%;
+
+    filter:
+
+    drop-shadow(
+
+        0 0 18px
+
+        rgba(255,255,255,.15)
+
+    );
+
+}
+
+/*==========================================================
+TEXTOS
+==========================================================*/
+
+.left h1{
+
+    margin-bottom:25px;
+
+    font-size:56px;
+
+    font-weight:800;
+
+    line-height:66px;
+
+}
+
+.left p{
+
+    margin-bottom:50px;
+
+    font-size:20px;
+
+    line-height:36px;
+
+    opacity:.92;
+
+}
+
+/*==========================================================
+RECURSOS
+==========================================================*/
+
+.features{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+}
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    font-size:18px;
+
+}
+
+.feature i{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.10);
+
+    font-size:20px;
+
+}
+
+/*==========================================================
+LADO DIREITO
+==========================================================*/
+
+.right{
+
+    width:520px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:50px;
+
+    background:#FFFFFF;
+
+    box-shadow:
+
+    -15px 0 50px
+
+    rgba(0,0,0,.18);
+
+}
+
+/*==========================================================
+CARD LOGIN
+==========================================================*/
+
+.login-card{
+
+    width:100%;
+
+    max-width:420px;
+
+    animation:fadeRight .8s;
+
+}
+
+/*==========================================================
+ANIMAÇÕES
+==========================================================*/
+
+@keyframes fadeLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes fadeRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*==========================================================
+RESPONSIVIDADE
+==========================================================*/
+
+@media(max-width:1100px){
+
+    .left{
+
+        display:none;
+
+    }
+
+    .right{
+
+        width:100%;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!--==========================================================
+PARTÍCULAS
+===========================================================-->
+
+<div class="particles">
+
+    <div class="circle"></div>
+
+    <div class="circle"></div>
+
+    <div class="circle"></div>
+
+    <div class="circle"></div>
+
+</div>
+
+<!--==========================================================
+CONTAINER
+===========================================================-->
+
+<div class="container">
+
+<!--==========================================================
+LADO ESQUERDO
+===========================================================-->
+
+<section class="left">
+
+    <div class="left-content">
+
+        <div class="logo">
+
+            <img
+
+                src="assets/logo.png"
+
+                alt="RomTech">
+
+        </div>
+
+        <h1>
+
+            RomTech Controle
+
+        </h1>
+
+        <p>
+
+            Uma plataforma completa para gestão corporativa de equipamentos,
+            compras, patrimônio, manutenção, transferências e solicitações.
+
+        </p>
+
+        <div class="features">
+
+            <div class="feature">
+
+                <i class="fa-solid fa-desktop"></i>
+
+                <span>Patrimônio</span>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                <span>Manutenção</span>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span>Compras</span>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-truck-fast"></i>
+
+                <span>Transferências</span>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-box"></i>
+
+                <span>Prateleira Virtual</span>
+
+            </div>
+
+            <div class="feature">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                <span>Dashboard</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--==========================================================
+LADO DIREITO
+===========================================================-->
+
+<section class="right">
+
+    <div class="login-card">
+        <!--==========================================================
+LOGO MOBILE
+===========================================================-->
+
+<div class="logo-mobile">
+
+    <img
+
+        src="assets/logo.png"
+
+        alt="RomTech">
+
+</div>
+
+<!--==========================================================
+TÍTULO
+===========================================================-->
+
+<h2>
+
+    Bem-vindo
+
+</h2>
+
+<p class="subtitle">
+
+    Entre com sua conta para acessar o RomTech Controle.
+
+</p>
+
+<!--==========================================================
+FORMULÁRIO
+===========================================================-->
+
+<form id="formLogin">
+
+    <!--======================================================
+    E-MAIL
+    =======================================================-->
+
+    <div class="form-group">
+
+        <label>
+
+            E-mail
+
+        </label>
+
+        <div class="input-box">
+
+            <i class="fa-solid fa-envelope"></i>
+
+            <input
+
+                type="email"
+
+                id="email"
+
+                placeholder="Digite seu e-mail"
+
+                autocomplete="username"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!--======================================================
+    SENHA
+    =======================================================-->
+
+    <div class="form-group">
+
+        <label>
+
+            Senha
+
+        </label>
+
+        <div class="input-box">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <input
+
+                type="password"
+
+                id="senha"
+
+                placeholder="Digite sua senha"
+
+                autocomplete="current-password"
+
+                required>
+
+            <button
+
+                type="button"
+
+                id="btnMostrarSenha"
+
+                class="toggle-password"
+
+                aria-label="Mostrar senha">
+
+                <i class="fa-solid fa-eye"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!--======================================================
+    OPÇÕES
+    =======================================================-->
+
+    <div class="login-options">
+
+        <label class="remember">
+
+            <input
+
+                type="checkbox"
+
+                id="lembrar">
+
+            <span>
+
+                Lembrar acesso
+
+            </span>
+
+        </label>
+
+        <a
+
+            href="#"
+
+            id="btnRecuperarSenha">
+
+            Esqueci minha senha
+
+        </a>
+
+    </div>
+
+    <!--======================================================
+    BOTÃO LOGIN
+    =======================================================-->
+
+    <button
+
+        type="submit"
+
+        class="btn-login">
+
+        <i class="fa-solid fa-right-to-bracket"></i>
+
+        Entrar no Sistema
+
+    </button>
+
+</form>
+
+<!--==========================================================
+RODAPÉ
+===========================================================-->
+
+<div class="login-footer">
+
+    <div>
+
+        <strong>
+
+            RomTech Controle
+
+        </strong>
+
+    </div>
+
+    <div id="versaoSistema">
+
+        Versão 3.0.0
+
+    </div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+<!--==========================================================
+LOADER
+===========================================================-->
+
+<div
+
+    id="loading"
+
+    class="loading-overlay">
+
+    <div class="loading-card">
+
+        <div class="spinner"></div>
+
+        <p>
+
+            Autenticando...
+
+        </p>
+
+    </div>
+
+</div>
+
+<!--==========================================================
+TOAST
+===========================================================-->
+
+<div
+
+    id="toast"
+
+    class="toast">
+
+</div>
+
+<!--==========================================================
+MODAL RECUPERAR SENHA
+===========================================================-->
+
+<div
+
+    id="modalRecuperar"
+
+    class="modal">
+
+    <div class="modal-content">
+
+        <!--==================================================
+        CABEÇALHO
+        ===================================================-->
+
+        <div class="modal-header">
+
+            <h3>
+
+                Recuperar Senha
+
+            </h3>
+
+            <button
+
+                type="button"
+
+                id="fecharModal"
+
+                aria-label="Fechar">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <!--==================================================
+        CORPO
+        ===================================================-->
+
+        <div class="modal-body">
+
+            <p>
+
+                Informe seu e-mail para receber o link de recuperação.
+
+            </p>
+
+            <input
+
+                type="email"
+
+                id="emailRecuperacao"
+
+                placeholder="usuario@empresa.com"
+
+                autocomplete="email">
+
+        </div>
+
+        <!--==================================================
+        RODAPÉ
+        ===================================================-->
+
+        <div class="modal-footer">
+
+            <button
+
+                type="button"
+
+                class="btn-cancelar"
+
+                id="cancelarRecuperacao">
+
+                Cancelar
+
+            </button>
+
+            <button
+
+                type="button"
+
+                class="btn-confirmar"
+
+                id="enviarRecuperacao">
+
+                Enviar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--==========================================================
+ESTILOS COMPLEMENTARES
+===========================================================-->
+
+<style>
+
+/*==========================================================
+FORMULÁRIO
+==========================================================*/
+
+.login-card h2{
+
+    font-size:34px;
+
+    color:#0B4F8A;
+
+    margin-bottom:8px;
+
+}
+
+.subtitle{
+
+    color:#6B7280;
+
+    line-height:24px;
+
+    margin-bottom:35px;
+
+}
+
+.form-group{
+
+    margin-bottom:22px;
+
+}
+
+.form-group label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#374151;
+
+}
+
+.input-box{
+
+    position:relative;
+
+}
+
+.input-box i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#9CA3AF;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    height:54px;
+
+    padding-left:50px;
+
+    padding-right:55px;
+
+    border:1px solid #D1D5DB;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:.25s;
+
+}
+
+.input-box input:focus{
+
+    border-color:#0B4F8A;
+
+    box-shadow:0 0 0 4px rgba(11,79,138,.15);
+
+}
+
+.toggle-password{
+
+    position:absolute;
+
+    top:50%;
+
+    right:10px;
+
+    transform:translateY(-50%);
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    color:#6B7280;
+
+}
+
+/*==========================================================
+OPÇÕES
+==========================================================*/
+
+.login-options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+    font-size:14px;
+
+}
+
+.remember{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+}
+
+.login-options a{
+
+    text-decoration:none;
+
+    color:#0B4F8A;
+
+    font-weight:600;
+
+}
+
+/*==========================================================
+BOTÃO LOGIN
+==========================================================*/
+
+.btn-login{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#0B4F8A;
+
+    color:#FFFFFF;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.btn-login:hover{
+
+    background:#093D6B;
+
+    transform:translateY(-2px);
+
+}
+
+/*==========================================================
+RODAPÉ
+==========================================================*/
+
+.login-footer{
+
+    margin-top:40px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    line-height:24px;
+
+    color:#9CA3AF;
+
+}
+
+.logo-mobile{
+
+    display:none;
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+.logo-mobile img{
+
+    width:180px;
+
+}
+
+/*==========================================================
+RESPONSIVO
+==========================================================*/
+
+@media(max-width:1100px){
+
+    .logo-mobile{
+
+        display:block;
+
+    }
+
+}
+
+</style>
+<!--==========================================================
+JAVASCRIPT
+===========================================================-->
+
+<script
+
+    type="module"
+
+    src="js/login.js">
+
+</script>
+
+</body>
+
+</html>
